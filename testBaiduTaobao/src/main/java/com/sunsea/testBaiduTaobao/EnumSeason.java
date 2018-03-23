@@ -2,7 +2,7 @@ package com.sunsea.testBaiduTaobao;
 
 public enum EnumSeason {
 	SPRING("春天"), SUMMER("夏天"), AUTUMN("秋天"), WINTER("冬天");
-	
+	  
 	private String now;
 	
 	private EnumSeason(String str) {
