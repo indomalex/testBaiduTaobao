@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="testBaiduTaobao" default="test" basedir=".">
+<!--基本属于ant调用testng的固定写法，里边的location指向testng的jar包-->
+  <taskdef name="testng" classname="org.testng.TestNGAntTask">
+    <classpath>
+      <pathelement location="D:\mavenRepository\org\testng\testng\6.11\testng-6.11.jar"/>
+    </classpath>
+  </taskdef>
+	
+   <property name="testdir" location="test-output" />
+   <property name="srcdir" location="src" />
+   <property name="libdir" location="D:\mavenRepository" />
+   <property name="full-compile" value="true" />
+   <path id="classpath.base"/> <!--这个没球什么用-->
+	
+	<!--这一坨是给javac作准备，一般都是指定参考包所在位置，和自己工程的源码、以及class文件所在目录-->
+   <path id="classpath.test">
+       <fileset dir="${libdir}">
+         <include name="**/*.jar" />
+      </fileset>
+      <pathelement location="${testdir}" />
+      <pathelement location="${srcdir}" />
+      <path refid="classpath.base" />
+   </path>
+	
+	<!--mkdir无则生成文件夹，有则不管-->
+	<target name="mkoutputdir">
+		<mkdir dir="${testdir}"/>
+	</target>
+	
+   <target name="clean" depends="mkoutputdir">
+      <delete verbose="${full-compile}">
+         <fileset dir="${testdir}" includes="**/*" />
+      </delete>
+   </target>
+	
+	<!--记住：classpath是用来指明参考类的-->
+   <target name="compile" depends="clean">
+      <javac srcdir="${srcdir}" destdir="${testdir}" 
+         verbose="${full-compile}" encoding="utf-8">
+         <classpath refid="classpath.test"/>
+      </javac>
+   </target>
+ 
+	<!--通过ant，指明testng.xml来执行testng-->
+   <target name="test" depends="compile">
+	<testng outputdir="${testdir}" classpathref="classpath.test"> 
+      <xmlfileset dir="." includes="testng.xml"/> 
+    </testng>
+   </target>
+</project>

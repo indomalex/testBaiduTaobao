@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestAll">
+
+  <test thread-count="5" name="Test">
+  
+    <classes>
+ <!-- <class name="com.sunsea.testBaiduTaobao.TestNGClass"/>
+      <class name="com.sunsea.testBaiduTaobao.TestBaidu"/>
+   <class name="com.sunsea.testBaiduTaobao.TestMyPages"/>  -->   
+      <class name="com.sunsea.testBaiduTaobao.TestTaobao"/>
+    </classes>
+ 
+  </test> 
+	
+<!-- 	
+  <test name="testNGDemo">
+  	<classes>
+	  	<class name="com.sunsea.testNGDemo.TestSelenium" />
+	  	<class name="com.sunsea.testNGDemo.TestGroup" />
+  	</classes>
+  </test>
+
+
+
+  <test name="selenium">
+  	<groups>
+  		<run>
+  			<include name="selenium-test" />
+  		</run>
+  	</groups>
+  	
+  	<classes>
+  		<class name="com.sunsea.testNGDemo.TestSelenium" />
+	  	<class name="com.sunsea.testNGDemo.TestGroup" />
+  	</classes>
+  </test>
+ -->
+</suite> 
